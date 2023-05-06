@@ -40,6 +40,7 @@ while not pila.es_vacia():
 print(f'cantidad de peliculas estrenadas en 2018 {count}')
 
 
+print('')
 # actividad 24
 class Personaje:
     def __init__(self,name,films):

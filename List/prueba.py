@@ -81,7 +81,6 @@ for valor in data:
     print(f'superheroes de marvel {valor[1]}')
 
 
-
 class Cancion:
     def __init__(self,titulo,artista,duracion,reproducciones):
         self.titulo = titulo
@@ -132,6 +131,94 @@ print('\ncancones de Artic Monkeys')
 data = lista_canciones.cancionesBanda('Artic Monkeys')
 for cancion in data:
     print(cancion)
+
+
+# actividad 11 
+class Personaje:
+    def __init__(self,nombre,altura,edad,genero,especie,planeta,episodios):
+        self.nombre = nombre
+        self.altura = altura
+        self.edad = edad
+        self.genero = genero
+        self.especie = especie
+        self.planeta = planeta
+        self.episodios = episodios
+
+    def __str__(self):
+        return f'{self.nombre}  {self.altura}  {self.edad}  {self.genero}  {self.especie}  {self.planeta}  {self.episodios}'
+
+
+personajes = [
+        {'name':'luke skywalker','height':1.72,'age':350,'sex':'M','kind':'humano','planet':'tatooine','ep':[4,5,6,7,8,9]},
+        {'name':'r2-d2','height':0.96,'age':250,'sex':'-','kind':'droide','planet':'naboo','ep':[1,2,3,4,5,6,7,8,9]},
+        {'name':'leila organa','height':1.50,'age':50,'sex':'F','kind':'humano','planet':'alderaan','ep':[4,5,6,7,8,9]},
+        {'name':'darth vader','height':2.05,'age':300,'sex':'M','kind':'humano','planet':'tatooine','ep':[1,2,3,4,5,6]},
+        {'name':'obi-wan kenobi','height':1.82,'age':900,'sex':'M','kind':'humano','planet':'tatooine','ep':[1,2,3,4,5,6,7]},
+        {'name':'yoda','height':0.50,'age':1000,'sex':'M','kind':'yodas','planet':'-','ep':[1,2,3,4,5,8]},
+        {'name':'han solo','height':172,'age':870,'sex':'M','kind':'humano','planet':'corellia','ep':[4,5,6,7]}, 
+        {'name':'ashoka tano','height':1.53,'age':100,'sex':'F','kind':'-','planet':'corellia','ep':[4,5,6,7]},
+        ]
+
+lista = Lista()
+for personaje in personajes:
+    lista.insertar(Personaje(personaje['name'].title(),
+                             personaje['height'],
+                             personaje['age'],
+                             personaje['sex'],
+                             personaje['kind'],
+                             personaje['planet'].title(),
+                             personaje['ep'],
+                             ),'nombre')
+print('')
+# punto a 
+lista.barrido()
+print('\npersonajes femeninos')
+for i in range(lista.tam()):
+    personaje = lista.elemento_indice(i)
+    if personaje.genero == 'F':
+        print(personaje.nombre)
+# punto b
+print('\ndroides que aparecen los 6 primeros episodios')
+for i in range(lista.tam()):
+    personaje = lista.elemento_indice(i)
+    if personaje.especie == 'droide':
+        for episodio in personaje.episodios:
+            if episodio <= 6:
+                print(personaje.nombre)
+                break
+# punto c 
+print('\ninfo de Han Solo y Darth Vader')
+data = lista.elemento_indice(lista.buscar('Darth Vader','nombre'))
+if data is not None:
+    print(data)
+data = lista.elemento_indice(lista.buscar('Han Solo','nombre'))
+if data is not None:
+    print(data)
+# punto d 
+print('\npersonajes que aparecen en el episodio 7 y los tres anteriores')
+for i in range(lista.tam()):
+    personaje = lista.elemento_indice(i)
+    if 7 in personaje.episodios and 6 in personaje.episodios and 5 in personaje.episodios and 4 in personaje.episodios:
+        print(personaje.nombre)
+# punto e 
+lista.reordenar('edad')
+print('\nmayores a 850 años de edad')
+for i in range(lista.tam()):
+    personaje = lista.elemento_indice(i)
+    if personaje.edad > 850:
+        print(personaje.nombre) 
+print(f'personaje con mayor edad {lista.elemento_indice(lista.tam()-1).nombre}')
+
+
+
+
+
+
+
+
+
+
+
 
 
 

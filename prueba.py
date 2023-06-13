@@ -116,6 +116,7 @@ else:
     print(f'no hay personaje en la posicion {posicion}')
 
 
+# nada
 
 
 

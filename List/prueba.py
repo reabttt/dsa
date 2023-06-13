@@ -132,7 +132,6 @@ data = lista_canciones.cancionesBanda('Artic Monkeys')
 for cancion in data:
     print(cancion)
 
-
 # actividad 11 
 class Personaje:
     def __init__(self,nombre,altura,edad,genero,especie,planeta,episodios):
@@ -208,6 +207,26 @@ for i in range(lista.tam()):
     if personaje.edad > 850:
         print(personaje.nombre) 
 print(f'personaje con mayor edad {lista.elemento_indice(lista.tam()-1).nombre}')
+
+# eliminar n cantidad de datos de un campo en particular
+# punto f 
+lista.reordenar('nombre')
+episodios_borrar = [4,5,6]
+indice = 0
+for i in range(lista.tam()):
+    control = True
+    episodepersonaje = lista.elemento_indice(indice).episodios 
+    for episode in episodios_borrar:
+        if episode not in episodepersonaje:
+            control = False
+            break
+    if control:
+        lista.eliminar(lista.elemento_indice(indice).nombre,'nombre')
+        indice -= 1 
+    indice += 1 
+lista.barrido()
+print('')
+
 
 
 
